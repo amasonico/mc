@@ -1,0 +1,498 @@
+@import url('normalize.css');
+
+body{
+	font-family: 'Roboto Mono', monospace;
+	background: #f15a24;
+	font-weight: 400;
+	font-size: 18px;
+	color: #FFF;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+
+a{
+	color: #555;
+	text-decoration: none;
+}
+
+h1, h2{
+	font-family: 'Passion One', cursive;
+	font-size: 56px;
+  	line-height: 0.9;
+  	letter-spacing: 1px;
+  	margin: 0;
+  	text-transform: uppercase;
+  	color: #000;
+}
+.st-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.st-container > input,
+.st-container > a {
+	position: fixed;
+    width: 25%;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: 500;
+    padding: 0 30px;
+    padding-top: 20px;
+    height: 80px;
+    background-color: #f15a24;
+    line-height: 1;
+    text-decoration: underline;
+}
+
+.st-container > input {
+	opacity: 0;
+	z-index: 1000;
+}
+
+.st-container > a {
+	z-index: 10;
+	color: #000;
+}
+
+/* "Fix" for percentage rounding: add a background bar pseudo element with the same color like the labels */
+.st-container:before {
+	content: '';
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+#st-control-1, #st-control-1 + a {
+	left: 0;
+	text-transform: uppercase;
+	font-weight: 700;
+	line-height: 1 !important;
+	text-decoration: none;
+	text-align: left !important;
+}
+
+#st-control-2, #st-control-2 + a {
+	left: 25%;
+}
+
+#st-control-3, #st-control-3 + a {
+	left: 50%;
+}
+
+#st-control-4, #st-control-4 + a {
+	left: 75%;
+}
+
+
+.st-container > input:checked + a,
+.st-container > input:checked:hover + a{
+	color: #fff;
+}
+
+.st-container > input:checked + a:after,
+.st-container > input:checked:hover + a:after{
+	bottom: 100%;
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	left: 50%;
+}
+
+.st-container > input:hover + a{
+}
+
+.st-container > input:hover + a:after {
+}
+
+.st-scroll,
+.st-panel {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.st-scroll {
+	top: 0;
+	left: 0;
+	/*-webkit-transition: all 1.5s ease;
+	-ms-transition: all 1.5s ease;
+	transition: all 1.5s ease;*/
+	-webkit-transition-duration:1.5s;
+    -webkit-transition-timing-function: steps(12, end);
+    transition-duration:1.5s;
+    transition-timing-function: steps(12,end);
+	
+	/* Let's enforce some hardware acceleration */
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+}
+
+.st-panel{
+	overflow-x: hidden;
+	padding: 110px 0 60px 0;
+} 
+
+#st-control-1:checked ~ .st-scroll {
+	-webkit-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	transform: translateY(0%);
+}
+#st-control-2:checked ~ .st-scroll {
+	-webkit-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+#st-control-3:checked ~ .st-scroll {
+	-webkit-transform: translateY(-200%);
+	-ms-transform: translateY(-200%);
+	transform: translateY(-200%);
+}
+#st-control-4:checked ~ .st-scroll {
+	-webkit-transform: translateY(-300%);
+	-ms-transform: translateY(-300%);
+	transform: translateY(-300%);
+}
+
+/* Content elements */
+
+.footer {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  padding: 0 30px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.contact {
+  color: #fff;
+}
+
+.copyright {
+  color: #f15a24;
+  font-size: 14px;
+}
+
+.flex-section {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: stretch;
+  width: 100%;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-bottom: 60px;
+}
+.block1 {
+	position: relative;
+    z-index: 10;
+  	width: 70%;
+  	padding-right: 20px;
+  	border-right: 2px dotted #000;
+}
+.block2 {
+  	width: 30%;
+  	padding-left: 20px;
+}
+.hero {
+  	font-size: 70px;
+}
+.subheading {
+  	font-size: 48px;
+  	text-transform: initial;
+  	margin-bottom: 20px;
+  	font-weight: 500;
+  }
+.sub {
+  	font-size: 21px;
+  	font-weight: 700;
+  	margin-top: 30px;
+}
+.sub._2col {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+._30 {
+  width: 30%;
+}
+
+._70 {
+  width: 70%;
+}
+.lowercase {
+  text-transform: initial;
+  font-weight: 500;
+}
+.staff {
+  	float: left;
+  	clear: both;
+  	margin-bottom: 40px;
+  	margin-left: -20px;
+}
+.avatar {
+	margin-top:	-40px;
+  	float: left;
+}
+.sidetext{
+  	font-size: 22px;
+  	line-height: 1.2;
+  	font-weight: 700;
+}
+
+.sidetext.b {
+  	padding-left: 256px;
+  	font-size: 20px;
+}
+
+.sidetext.left {
+  	margin: 20px 0 10px 0;
+  	font-weight: 700;
+}
+
+.news {
+	 width: 25%;
+	 margin-top: 0px;
+	 font-size: 21px;
+	 text-transform: uppercase;
+	 margin-right: 20px;
+}
+.ul {
+  width: 75%;
+  padding: 0 0 30px 0;
+  margin: 0;
+}
+
+.ul.samples {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.project {
+	font-size: 18px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.link {
+  padding-bottom: 1px;
+  border-bottom: 2px solid rgba(0, 0, 0, .2);
+  -webkit-transition: border-color 150ms ease-in-out;
+  transition: border-color 150ms ease-in-out;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  line-height: 26px;
+}
+
+.link:hover {
+  border-bottom-color: #fff;
+}
+
+.list-item {
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.blacksub {
+  color: #000;
+  text-transform: uppercase;
+}
+
+
+
+/* Media Queries */
+
+
+
+@media (max-width: 1024px) {
+  
+  	.sidetext {
+    font-size: 20px;
+	}
+	.block1._30 {
+    width: 40%
+	}
+	.block12._70{
+    width: 60%
+	}
+	.sidetext.b {
+	padding-left: 40px;
+	font-size: 19px;
+	}
+	.avatar {
+	float: none;
+	margin-bottom: 20px;
+	}
+	h2{
+	font-size: 50px !important;
+	}
+	.hero{
+	font-size: 60px !important;
+	}
+	.sub._2col {
+	-webkit-column-count: 1;
+	-moz-column-count: 1;
+	column-count: 1;
+}
+}
+
+
+@media (max-width: 767px) {
+
+	.st-container > input, .st-container > a {
+		padding: 20px;
+	}
+	.flex-section {
+	    -webkit-box-orient: vertical;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
+  	}
+	.block1 {
+	  	width: 100%;
+	  	padding: 0 0 40px 0;
+	  	border-right: none;
+	  	border-bottom: 2px dotted #000;
+	  	margin-bottom: 40px;
+	}
+	.block1._30 {
+    	width: 100%
+	}
+	h2{
+	font-size: 46px !important;
+	}
+	.hero{
+	font-size: 56px !important;
+	}
+	.avatar {
+	margin-left: -30px;
+	}
+	.staff {
+	  	display: flex;
+	  	-webkit-box-align: start;
+	    -webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	    align-items: flex-start;
+	    margin-top: 30px;
+	    margin-left: 0;
+	}
+	.sub {
+	  	font-size: 20px;
+	}
+	.block2 {
+	  	width: 100%;
+	  	padding-left: 0;
+	}
+  	.sidetext.b {
+		padding-left: 0px;
+  	}
+	.flex-section {				
+	    -webkit-box-orient: vertical;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	 	flex-direction: column;
+		padding:0 20px;
+	}
+	.link, .contact {
+		font-size: 16px;
+  	}
+  	.news {
+		font-size: 18px;
+  	}
+  	.footer {
+		padding:0 20px;
+  	}
+}
+
+
+
+@media screen and (max-width: 520px) {
+	
+	.st-container > input, .st-container > a{
+		font-size: 16px;
+		text-align: center;
+		height: 70px;
+	}
+	.st-panel {
+	padding-top: 80px;
+	}
+	.staff {
+	display: block;
+	}
+	.sub {
+	  	font-size: 20px;
+	  	margin-top: 20px;
+	}
+	.sidetext.b {
+		font-size: 17px;
+  	}
+  	.hero{
+	font-size: 52px !important;
+	}
+  	.footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+	}
+	.news {
+		width: 100%
+	}
+  	.ul {
+		width: 100%;
+		margin-bottom: 10px;
+ 	}
+}
+
+@media screen and (max-width: 360px) {
+
+	.flex-section {
+    padding: 0 15px;
+}
+
+	.hero{
+	font-size: 40px !important;
+	}
+	.st-container > input, .st-container > a {
+		padding: 15px;
+		text-align: center;
+		height: 52px;
+		font-size: 15px;
+	}
+}
