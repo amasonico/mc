@@ -1,3 +1,3 @@
 # Morton Collins
 
-https://jpmassonnier.github.io/mc/
+https://amasonico.github.io/mc/
